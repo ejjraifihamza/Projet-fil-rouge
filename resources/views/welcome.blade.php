@@ -11,7 +11,7 @@
                         </h1>
                     </div>
                 </a>
-                <a href="#">
+                <a href="/guardian">
                     <div class="circle-2">
                         <h1 class="my-16">
                             Guardians
