@@ -1,5 +1,59 @@
-@tailwind base;
- 
-@tailwind components;
- 
-@tailwind utilities;
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+body{
+    padding: 0;
+    margin: 0;
+}
+.g1{
+    height: 100vh;
+    width: 100vw;
+}
+.circles{
+    margin: 150px 0px 0px 130px;
+    position: relative;
+}
+.circle-1{
+    position: absolute;
+    background-color: aqua;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    left: 100px;
+}
+.circle-2{
+    position: absolute;
+    background-color: aqua;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    left: 195px;
+    top: 170px;
+
+}
+.circle-3{
+    position: absolute;
+    background-color: aqua;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    top: 170px;
+}
+#hat{
+    transform: translateY(-2%);
+    animation: up-down 3s ease-in-out infinite;
+}
+@keyframes up-down {
+    0% {
+        transform: translateY(-2%);
+    }
+    70% {
+        transform: translateY(5%);
+    }
+    100% {
+        transform: translateY(-2%);
+    }
+}
