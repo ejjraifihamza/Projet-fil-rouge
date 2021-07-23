@@ -41,10 +41,9 @@ return [
             'provider' => 'users',
         ],
 
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-            'hash' => false,
+        'webguardian' => [
+            'driver' => 'session',
+            'provider' => 'guardians',
         ],
     ],
 
@@ -71,10 +70,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'guardians' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Guardian::class,
+        ],
     ],
 
     /*
