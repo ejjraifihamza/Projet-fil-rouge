@@ -4,7 +4,7 @@
     <div class="all flex flex-row">
         <div class="g1">
             <div class="circles text-center text-black uppercase ">
-                <a href="#">
+                <a href="/student">
                     <div class="circle-1">
                         <h1 class="my-16">
                             Students
