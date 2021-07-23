@@ -18,7 +18,7 @@
                         </h1>
                     </div>
                 </a>
-                <a href="#">
+                <a href="/teacher">
                     <div class="circle-3">
                         <h1 class="my-16">
                             Teachers

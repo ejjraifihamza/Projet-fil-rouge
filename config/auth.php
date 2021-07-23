@@ -45,6 +45,11 @@ return [
             'driver' => 'session',
             'provider' => 'guardians',
         ],
+
+        'webteacher' => [
+            'driver' => 'session',
+            'provider' => 'teachers',
+        ],
     ],
 
     /*
@@ -73,6 +78,11 @@ return [
         'guardians' => [
             'driver' => 'eloquent',
             'model' => App\Models\Guardian::class,
+        ],
+
+        'teachers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Teacher::class,
         ],
     ],
 
