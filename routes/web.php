@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/student', [UserAuthController::class, 'index'])->name('user.home')->middleware("auth:web");
+Route::get('/login', [UserAuthController::class, 'login'])->name('user.login');
+Route::get('/logout', [UserAuthController::class, 'logout'])->name('user.logout');
+Route::post('/login', [UserAuthController::class, 'handleLogin'])->name('user.handleLogin');
