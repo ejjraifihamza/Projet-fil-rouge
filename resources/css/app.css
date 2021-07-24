@@ -57,3 +57,18 @@ body{
         transform: translateY(-2%);
     }
 }
+.hat-2{
+    transform: translateY(-25%);
+    animation: hat-login 2s ease-in-out infinite;
+}
+@keyframes hat-login {
+    0% {
+        transform: translateY(-25%);
+    }
+    50% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-25%);
+    }
+}
