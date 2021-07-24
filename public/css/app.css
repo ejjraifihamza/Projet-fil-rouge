@@ -31932,6 +31932,40 @@ body{
   }
 }
 
+.hat-2{
+  transform: translateY(-25%);
+  -webkit-animation: hat-login 2s ease-in-out infinite;
+          animation: hat-login 2s ease-in-out infinite;
+}
+
+@-webkit-keyframes hat-login {
+  0% {
+    transform: translateY(-25%);
+  }
+
+  50% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(-25%);
+  }
+}
+
+@keyframes hat-login {
+  0% {
+    transform: translateY(-25%);
+  }
+
+  50% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(-25%);
+  }
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
