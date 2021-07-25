@@ -87,5 +87,5 @@
           </div>
         </div>
       </div>
-      <script src="{{ asset('js/footer.js') }}"></script>
+      <script src="{{ asset('js/toogle.js') }}"></script>
   </footer>
