@@ -32,7 +32,66 @@
             </nav>
         </div>
     </header>
-        <h1>hello Teacher</h1>
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+    <div class="fake-nav flex justify-around ">
+        <div>
+            <a class="" href="{{ route('teacher.uploadpage') }}">Uploade Homework</a>
+        </div>
+        <div>
+            <a class="" href="">Student Homework</a>
+        </div>
+    </div>
+    <div class="m-auto w-4/5 py-24">
+        <div class="text-center">
+            <h1 class="text-5xl uppercase bold">
+                cours
+            </h1>
+        </div>
+        <div class="pt-10">
+            <a href="teacher/uploadpage"
+            class="border-b-2 pb-2 border-dotted italic text-gray-500"
+            >Add a new cours &rarr;</a>
+        </div>
+        <div class="w-5/6 py-10">
+            @foreach ($data as $cours)
+                <div class="m-auto">
+                    <div class="float-right">
+                        <a class="border-b-2 pb-2 border-dotted italic text-green-500"
+                            href="/teacher/{{ $cours->id }}/edit">
+                            Edit &rarr;
+                        </a>
+                        <form action="/teacher/{{ $cours->id }}" class="pt-6" method="POST">
+                            @csrf
+                            {{-- @method('delete') --}}
+                            <button
+                            type="submit"
+                            class="border-b-2 pb-2 border-dotted italic text-red-500">
+                                Delete &rarr;
+                            </button>
+                        </form>
+                    </div>
+                    <iframe src="{{ asset('assets/' . $cours->file_path) }}" class="w-48 mb-8 shadow-xl" width="300" height="300" alt=""></iframe>
+                    <span class="uppercase text-blue-500 font-bold text-xs italic">
+                        deadline {{ $cours->deadline }}
+                    </span>
+                    <h2 class="text-gray-700 text-5xl hover:text-gray-500">
+                        <a href="/teacher/{{ $cours->id }}">
+                            {{ $cours->name }}
+                        </a>
+                    </h2>
+                    <p class="text-lg text-gray-700 py-6">
+                        {{ $cours->description }}
+                    </p>
+                    <hr class="mt-4 mb-8">
+                </div>
+            @endforeach
+        </div>
+        {{ $data->links() }}
+    </div>
   
 </body>
 </html>
