@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Auth;
 
 class UserAuthController extends Controller
 {
-    public function index()
-    {
-        return view('user.home');
-    }
+    // public function index()
+    // {
+    //     return view('user.home');
+    // }
 
     public function login()
     {

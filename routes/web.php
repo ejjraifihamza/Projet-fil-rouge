@@ -5,7 +5,7 @@ use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\GuardianAuthController;
 use App\Http\Controllers\TeacherAuthController;
 use App\Http\Controllers\TeacherHomeworkController;
-use App\Http\Controllers\TeacherHomeworkController2;
+use App\Http\Controllers\StudentHomeworkController;
 
 
 /*
@@ -23,15 +23,41 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/student', [UserAuthController::class, 'index'])
-    ->name('user.home')
-    ->middleware("auth:web");
+// Student Routes
+
+// Route::get('/student', [UserAuthController::class, 'index'])
+//     ->name('user.home')
+//     ->middleware("auth:web");
 Route::get('/login', [UserAuthController::class, 'login'])
     ->name('user.login');
 Route::get('/logout', [UserAuthController::class, 'logout'])
     ->name('user.logout');
 Route::post('/login', [UserAuthController::class, 'handleLogin'])
     ->name('user.handleLogin');
+
+Route::get('/student', [StudentHomeworkController::class, 'index'])
+    ->name('user.home')
+    ->middleware("auth:web");
+Route::get('/student/correctupload', [StudentHomeworkController::class, 'correctupload'])
+    ->name('student.correctupload')
+    ->middleware("auth:web");
+Route::get('/student/viewhomework/{id}', [StudentHomeworkController::class, 'view'])
+    ->name('user.viewhomework')
+    ->middleware("auth:web");
+Route::get('/student/downloadhomework/{file}', [StudentHomeworkController::class, 'download'])
+    ->name('user.downloadhomework')
+    ->middleware("auth:web");
+Route::get('/student/uploadpage', [StudentHomeworkController::class, 'uploadpage'])
+    ->name('student.uploadpage')
+    ->middleware("auth:web");
+Route::post('/student/uploadfile', [StudentHomeworkController::class, 'store'])
+    ->name('student.uploadfile')
+    ->middleware("auth:web");
+Route::get('/student/downloadcorrection/{file}', [StudentHomeworkController::class, 'downloadCorrection'])
+    ->name('user.downloadcorrection')
+    ->middleware("auth:web");
+
+// Guardian Routes
 
 Route::get('/guardian', [GuardianAuthController::class, 'index'])
     ->name('guardian.home')
@@ -43,6 +69,8 @@ Route::get('/guardian/logout', [GuardianAuthController::class, 'logout'])
 Route::post('/guardian/login', [GuardianAuthController::class, 'handleLogin'])
     ->name('guardian.handleLogin');
 
+// Teacher Routes
+
 // Route::get('/teacher', [TeacherHomeworkController::class, 'index'])
 //     ->name('teacher.home')
 //     ->middleware("auth:webteacher");
@@ -53,8 +81,6 @@ Route::get('/teacher/logout', [TeacherAuthController::class, 'logout'])
 Route::post('/teacher/login', [TeacherAuthController::class, 'handleLogin'])
     ->name('teacher.handleLogin');
 
-
-// Route::resource('/teacher', TeacherHomeworkController2::class);
 Route::get('/teacher', [TeacherHomeworkController::class, 'index'])
     ->name('teacher.home')
     ->middleware("auth:webteacher");

@@ -5,21 +5,21 @@
         <div class="g1">
             <div class="circles text-center text-black uppercase ">
                 <a href="/student">
-                    <div class="circle-1">
+                    <div class="circle-1 shadow-xl">
                         <h1 class="my-16">
                             Students
                         </h1>
                     </div>
                 </a>
                 <a href="/guardian">
-                    <div class="circle-2">
+                    <div class="circle-2 shadow-xl">
                         <h1 class="my-16">
                             Guardians
                         </h1>
                     </div>
                 </a>
                 <a href="/teacher">
-                    <div class="circle-3">
+                    <div class="circle-3 shadow-xl">
                         <h1 class="my-16">
                             Teachers
                         </h1>
