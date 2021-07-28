@@ -26,13 +26,58 @@
           
                     <div class="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
                     <span class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">{{ Auth::user()->name }}</span>
+                    <a class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300" href="{{ route('student.correctupload') }}">Your Correct</a>
+                    <a class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300" href="#">Assignment</a>
                     <a class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600" href="{{ route('user.logout') }}">Logout</a>
                     </div>
               </div>
             </nav>
         </div>
     </header>
-        <h1>hello Student</h1>
+    <div class="m-auto w-4/5 py-24">
+        <div class="text-center">
+            <h1 class="text-5xl uppercase bold">
+                cours
+            </h1>
+        </div>
+        <div class="pt-10">
+            <a href="student/uploadpage"
+            class="border-b-2 pb-2 border-dotted italic text-gray-500"
+            >Add Your Correction &rarr;</a>
+        </div>
+        <div class="w-5/6 py-10">
+            @foreach ($data as $cours)
+                <div class="m-auto">
+                    <div class="float-right">
+                        <a class="border-b-2 pb-2 border-dotted italic text-green-500"
+                        href="{{ route('user.viewhomework', $cours->id) }}">
+                            view &rarr;
+                        </a>
+                        <br><br>
+                        <a class="border-b-2 pb-2 border-dotted italic text-red-500"
+                        href="{{ route('user.downloadhomework', $cours->file_path) }}">
+                            Download &rarr;
+                        </a>
+                      
+                    </div>
+                    <iframe src="{{ asset('assets/' . $cours->file_path) }}" class="w-48 mb-8 shadow-xl" width="300" height="300" alt=""></iframe>
+                    <span class="uppercase text-red-500 font-bold text-xs italic">
+                        deadline {{ $cours->deadline }}
+                    </span>
+                    <h2 class="text-gray-700 text-5xl hover:text-gray-500">
+                        <a href="/teacher/{{ $cours->id }}">
+                            {{ $cours->name }}
+                        </a>
+                    </h2>
+                    <p class="text-lg text-gray-700 py-6">
+                        {{ $cours->description }}
+                    </p>
+                    <hr class="mt-4 mb-8">
+                </div>
+            @endforeach
+        </div>
+        {{ $data->links() }}
+    </div>
   
 </body>
 </html>
