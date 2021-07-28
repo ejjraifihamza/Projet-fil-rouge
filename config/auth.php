@@ -50,6 +50,11 @@ return [
             'driver' => 'session',
             'provider' => 'teachers',
         ],
+
+        'webmanager' => [
+            'driver' => 'session',
+            'provider' => 'managers',
+        ],
     ],
 
     /*
@@ -83,6 +88,11 @@ return [
         'teachers' => [
             'driver' => 'eloquent',
             'model' => App\Models\Teacher::class,
+        ],
+
+        'managers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Manager::class,
         ],
     ],
 
