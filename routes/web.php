@@ -9,7 +9,6 @@ use App\Http\Controllers\TeacherHomeworkController;
 use App\Http\Controllers\StudentHomeworkController;
 use App\Http\Controllers\ManagerController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -113,4 +112,28 @@ Route::post('/manager/login', [ManagerAuthController::class, 'handleLogin'])
 
 Route::get('/manager', [ManagerController::class, 'index'])
     ->name('manager.home')
+    ->middleware("auth:webmanager");
+Route::get('manager/addstudent', [ManagerController::class, 'addStudent'])
+    ->name('manager.addstudent')
+    ->middleware("auth:webmanager");
+Route::post('manager/uploadstudent', [ManagerController::class, 'uploadStudent'])
+    ->name('manager.uploadstudent')
+    ->middleware("auth:webmanager");
+Route::get('manager/addguardian', [ManagerController::class, 'addGuardian'])
+    ->name('manager.addguardian')
+    ->middleware("auth:webmanager");
+Route::post('manager/uploaguardian', [ManagerController::class, 'uploadGuardian'])
+    ->name('manager.uploadguardian')
+    ->middleware("auth:webmanager");
+Route::get('manager/addteacher', [ManagerController::class, 'addTeacher'])
+    ->name('manager.addteacher')
+    ->middleware("auth:webmanager");
+Route::post('manager/uploadteacher', [ManagerController::class, 'uploadTeacher'])
+    ->name('manager.uploadteacher')
+    ->middleware("auth:webmanager");
+Route::get('manager/addmanager', [ManagerController::class, 'addManager'])
+    ->name('manager.addmanager')
+    ->middleware("auth:webmanager");
+Route::post('manager/uploadmanager', [ManagerController::class, 'uploadManager'])
+    ->name('manager.uploadmanager')
     ->middleware("auth:webmanager");
