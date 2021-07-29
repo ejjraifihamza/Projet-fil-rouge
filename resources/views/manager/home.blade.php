@@ -32,7 +32,10 @@
             </nav>
         </div>
     </header>
- 
+    <a href="{{ route('manager.addstudent') }}">Add student</a>
+    <a href="{{ route('manager.addguardian') }}">Add guardian</a>
+    <a href="{{ route('manager.addteacher') }}">Add teacher</a>
+    <a href="{{ route('manager.addmanager') }}">Add manager</a>
   
 </body>
 </html>
