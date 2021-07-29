@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\GuardianAuthController;
 use App\Http\Controllers\TeacherAuthController;
+use App\Http\Controllers\ManagerAuthController;
 use App\Http\Controllers\TeacherHomeworkController;
 use App\Http\Controllers\StudentHomeworkController;
+use App\Http\Controllers\ManagerController;
 
 
 /*
@@ -23,7 +25,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Student Routes
+// ! Student Routes
 
 // Route::get('/student', [UserAuthController::class, 'index'])
 //     ->name('user.home')
@@ -69,7 +71,7 @@ Route::get('/guardian/logout', [GuardianAuthController::class, 'logout'])
 Route::post('/guardian/login', [GuardianAuthController::class, 'handleLogin'])
     ->name('guardian.handleLogin');
 
-// Teacher Routes
+// ! Teacher Routes
 
 // Route::get('/teacher', [TeacherHomeworkController::class, 'index'])
 //     ->name('teacher.home')
@@ -99,3 +101,16 @@ Route::post('/teacher/updatefile', [TeacherHomeworkController::class, 'update'])
 Route::post('/teacher/{id}', [TeacherHomeworkController::class, 'destroy'])
     ->name('teacher.deletefile')
     ->middleware("auth:webteacher");
+
+// ! Manager Routes
+
+Route::get('/manager/login', [ManagerAuthController::class, 'login'])
+    ->name('manager.login');
+Route::get('/manager/logout', [ManagerAuthController::class, 'logout'])
+    ->name('manager.logout');
+Route::post('/manager/login', [ManagerAuthController::class, 'handleLogin'])
+    ->name('manager.handleLogin');
+
+Route::get('/manager', [ManagerController::class, 'index'])
+    ->name('manager.home')
+    ->middleware("auth:webmanager");
