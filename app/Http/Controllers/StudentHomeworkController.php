@@ -41,6 +41,7 @@ class StudentHomeworkController extends Controller
             $input['file_path'] = "$profileImage";
         }
         StudentHomework::create([
+            'student_id' => $input['student_id'],
             'name' => $input['name'],
             'file_path' => $input["file_path"]
         ]);

@@ -12,5 +12,5 @@ class TeacherHomework extends Model
     protected $table = 'teacher_homework'; 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['name', 'description', 'deadline', 'file_path'];
+    protected $fillable = ['name', 'description', 'deadline', 'file_path', 'teacher_id'];
 }
