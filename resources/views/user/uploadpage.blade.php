@@ -34,6 +34,7 @@
     </header>
     <form action="{{ route('student.uploadfile') }}" method="post" enctype="multipart/form-data">
         @csrf
+    <input type="hidden" name="student_id" value="{{ Auth::user()->id }}">
     <input type="text" name="name" placeholder="cours name">
     <input type="file" name="file_path">
     <input type="submit" name="submit" id="">
