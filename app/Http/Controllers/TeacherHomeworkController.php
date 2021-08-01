@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TeacherHomework;
+use Illuminate\Support\Facades\Auth;
 
 class TeacherHomeworkController extends Controller
 {
@@ -29,6 +30,7 @@ class TeacherHomeworkController extends Controller
             $input['file_path'] = "$profileImage";
         }
         TeacherHomework::create([
+            'teacher_id' => $input['teacher_id'],
             'name' => $input['name'],
             'description' => $input['description'],
             'deadline' => $input['deadline'],
@@ -65,7 +67,7 @@ class TeacherHomeworkController extends Controller
         }
         //dd($request);
         $teacherHomework::where('id',$request->input('id'))->update([
-            // 'teacher_id' => Auth::user()->id,
+            'teacher_id' => $input['teacher_id'],
             'name' => $input['name'],
             'description' => $input['description'],
             'deadline' => $input['deadline'],
