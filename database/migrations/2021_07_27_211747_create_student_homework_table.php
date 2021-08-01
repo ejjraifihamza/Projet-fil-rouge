@@ -15,6 +15,7 @@ class CreateStudentHomeworkTable extends Migration
     {
         Schema::create('student_homework', function (Blueprint $table) {
             $table->id();
+            $table->string('student_id');
             $table->string('name');
             $table->string('file_path');
             $table->timestamps();
