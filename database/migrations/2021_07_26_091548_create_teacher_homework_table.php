@@ -15,6 +15,7 @@ class CreateTeacherHomeworkTable extends Migration
     {
         Schema::create('teacher_homework', function (Blueprint $table) {
             $table->id();
+            $table->string('teacher_id');
             $table->string('name');
             $table->string('description');
             $table->date('deadline');
