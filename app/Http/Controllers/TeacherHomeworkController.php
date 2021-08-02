@@ -67,7 +67,7 @@ class TeacherHomeworkController extends Controller
         }
         //dd($request);
         $teacherHomework::where('id',$request->input('id'))->update([
-            'teacher_id' => $input['teacher_id'],
+            // 'teacher_id' => Auth::user()->id,
             'name' => $input['name'],
             'description' => $input['description'],
             'deadline' => $input['deadline'],
