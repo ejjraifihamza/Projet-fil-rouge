@@ -9,6 +9,7 @@ use App\Http\Controllers\TeacherHomeworkController;
 use App\Http\Controllers\StudentHomeworkController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\TeacherCoursController;
+use App\Http\Controllers\StudentCoursController;
 use App\Models\TeacherCours;
 
 /*
@@ -60,7 +61,19 @@ Route::get('/student/downloadcorrection/{file}', [StudentHomeworkController::cla
     ->name('user.downloadcorrection')
     ->middleware("auth:web");
 
-// Guardian Routes
+// ! Student Cours Routes
+
+Route::get('/student/cours', [StudentCoursController::class, 'index'])
+    ->name('student.cours')
+    ->middleware("auth:web");
+Route::get('/student/cours/viewcours/{id}', [StudentCoursController::class, 'view'])
+    ->name('student.cours.viewcours')
+    ->middleware("auth:web");
+Route::get('/student/cours/downloadcours/{file}', [StudentCoursController::class, 'download'])
+    ->name('student.cours.downloadcours')
+    ->middleware("auth:web");
+
+// ! Guardian Routes
 
 Route::get('/guardian', [GuardianAuthController::class, 'index'])
     ->name('guardian.home')
