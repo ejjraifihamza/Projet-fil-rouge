@@ -8,6 +8,8 @@ use App\Http\Controllers\ManagerAuthController;
 use App\Http\Controllers\TeacherHomeworkController;
 use App\Http\Controllers\StudentHomeworkController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\TeacherCoursController;
+use App\Models\TeacherCours;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +103,27 @@ Route::post('/teacher/{id}', [TeacherHomeworkController::class, 'destroy'])
     ->name('teacher.deletefile')
     ->middleware("auth:webteacher");
 
+// ! Teacher Cours Routes
+
+Route::get('/teacher/cours', [TeacherCoursController::class, 'index'])
+    ->name('teacher.cours')
+    ->middleware("auth:webteacher");
+Route::get('/teacher/cours/uploadpage', [TeacherCoursController::class, 'uploadpage'])
+    ->name('teacher.cours.uploadpage')
+    ->middleware("auth:webteacher");
+Route::post('/teacher/cours/uploadfile', [TeacherCoursController::class, 'store'])
+    ->name('teacher.cours.uploadfile')
+    ->middleware("auth:webteacher");
+Route::get('teacher/cours/{id}/edit', [TeacherCoursController::class, 'edit'])
+    ->name('teacher.cours.edit')
+    ->middleware("auth:webteacher");
+Route::post('teacher/cours/updatefile', [TeacherCoursController::class, 'update'])
+    ->name('teacher.cours.updatefile')
+    ->middleware("auth:webteacher");
+Route::post('teacher/cours/{id}', [TeacherCoursController::class, 'destroy'])
+    ->name('teacher.cours.deletefile')
+    ->middleware("auth:webteacher");
+    
 // ! Manager Routes
 
 Route::get('/manager/login', [ManagerAuthController::class, 'login'])
