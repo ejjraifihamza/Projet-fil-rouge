@@ -18,6 +18,7 @@ class CreateStudentHomeworkTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('teacher_homework_id')->unsigned();
             $table->integer('class_name_id')->unsigned();
+            $table->string('subject');
             $table->string('name');
             $table->string('file_path');
             $table->timestamps();
