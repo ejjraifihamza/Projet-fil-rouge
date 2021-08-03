@@ -14,12 +14,21 @@ class CreateTeacherCoursTable extends Migration
     public function up()
     {
         Schema::create('teacher_cours', function (Blueprint $table) {
-            $table->id();
-            $table->string('teacher_id');
+            $table->increments('id');
+            $table->integer('teacher_id')->unsigned();
+            $table->integer('class_name_id')->unsigned();
             $table->string('name');
             $table->string('description');
             $table->string('file_path');
             $table->timestamps();
+            $table->foreign('teacher_id')
+                ->references('id')
+                ->on('teachers')
+                ->onDelete('cascade');
+            $table->foreign('class_name_id')
+                ->references('id')
+                ->on('classes')
+                ->onDelete('cascade');
         });
     }
 
