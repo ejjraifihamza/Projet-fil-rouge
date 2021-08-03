@@ -12,5 +12,10 @@ class TeacherCorrect extends Model
     protected $table = 'teacher_correct';
     protected $primaryKey = 'id';
 
-    protected $fillable = ['teacher_id', 'student_homework_id', 'note', 'notice'];
+    protected $fillable = [
+        'teacher_id',
+        'student_homework_id',
+        'note',
+        'notice'
+    ];
 }
