@@ -5,12 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Niveau extends Model
+class Classe extends Model
 {
     use HasFactory;
 
-    protected $table = 'niveaux'; 
-    protected $primaryKey = 'id';
-
-    protected $fillable = ['niveau'];
+    protected $fillable = ['class_name'];
 }
