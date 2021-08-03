@@ -12,5 +12,12 @@ class StudentHomework extends Model
     protected $table = 'student_homework'; 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['name', 'file_path', 'student_id'];
+    protected $fillable = [
+        'user_id',
+        'teacher_homework_id',
+        'class_name_id',
+        'subject',
+        'name',
+        'file_path'
+    ];
 }
