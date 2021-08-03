@@ -13,5 +13,12 @@ class TeacherCours extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['teacher_id', 'niveau_id', 'name', 'description', 'file_path'];
+    protected $fillable = [
+        'teacher_id',
+        'class_name_id',
+        'subject',
+        'name',
+        'description',
+        'file_path'
+    ];
 }
