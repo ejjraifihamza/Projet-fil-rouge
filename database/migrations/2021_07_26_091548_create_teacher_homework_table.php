@@ -17,6 +17,7 @@ class CreateTeacherHomeworkTable extends Migration
             $table->increments('id');
             $table->integer('class_name_id')->unsigned();
             $table->integer('teacher_id')->unsigned();
+            $table->string('subject');
             $table->string('name');
             $table->string('description');
             $table->date('deadline');

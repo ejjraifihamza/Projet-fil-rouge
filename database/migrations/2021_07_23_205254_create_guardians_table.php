@@ -16,7 +16,7 @@ class CreateGuardiansTable extends Migration
         Schema::create('guardians', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
