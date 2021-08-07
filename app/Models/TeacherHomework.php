@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TeacherHomework extends Model
 {
@@ -21,4 +22,16 @@ class TeacherHomework extends Model
         'deadline',
         'file_path'
     ];
+
+    public function teacherHomeworkStudentHomeworks() {
+        return $this->HasMany(StudentHomework::class);
+    }
+
+    public function classe() {
+        return $this->belongsTo(Classe::class);
+    }
+
+    public function teacher() {
+        return $this->belongsTo(Teacher::class);
+    }
 }
