@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class TeacherCoursController extends Controller
 {
     public function index() {
-        $cours = TeacherCours::all();
+        $cours = TeacherCours::all()->where('subject', '=', Auth::user()->subject)
+                                    ->where('teacher_id', '=', Auth::user()->id)
+                                    ->sortByDesc('created_at');
         return view('teacher.cours.home', [
             'cours' => $cours
         ]);
@@ -32,6 +34,8 @@ class TeacherCoursController extends Controller
 
         TeacherCours::create([
             'teacher_id' => $input['teacher_id'],
+            'class_name_id' => $input['class_name_id'],
+            'subject' => $input['subject'],
             'name' => $input['name'],
             'description' => $input['description'],
             'file_path' => $input['file_path']
@@ -50,8 +54,8 @@ class TeacherCoursController extends Controller
 
     public function update(Request $request, TeacherCours $teacherCours) {
         $input = $request->all();
-        
-        $image = $request->file()['path_file'];
+        // dd($input);
+        $image = $request->file('file_path');
         $destinationPath = 'coursassets/';
         $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
         if($image->move($destinationPath, $profileImage)){
