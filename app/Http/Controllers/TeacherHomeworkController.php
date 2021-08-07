@@ -2,17 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StudentHomework;
 use Illuminate\Http\Request;
 use App\Models\TeacherHomework;
+use App\Models\Teacher;
+use App\Models\TeacherCorrect;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class TeacherHomeworkController extends Controller
 {
     public function index()
     {
-        $data = TeacherHomework::latest()->paginate(3);
+        $data = TeacherHomework::all()->where('subject', '=', Auth::user()->subject)
+                                        ->where('teacher_id', '=', Auth::user()->id);
         return view('teacher.home', [
             'data' => $data
+        ]);
+    }
+
+    public function profile($id) {
+        // dd($id);
+        $teacher = Teacher::find($id);
+        return view('teacher.profile', [
+            'teacher' => $teacher
+        ]);
+    }
+
+    public function studentspage() {
+        $students = User::all()->where('class_name_id', '=', Auth::user()->class_name_id);
+        return view('teacher.allstudent', [
+            'students' => $students
         ]);
     }
     
@@ -22,7 +42,7 @@ class TeacherHomeworkController extends Controller
 
     public function store(Request $request) {
         $input = $request->all();
-
+        // dd($input);
         if ($image = $request->file('file_path')) {
             $destinationPath = 'assets/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -30,7 +50,9 @@ class TeacherHomeworkController extends Controller
             $input['file_path'] = "$profileImage";
         }
         TeacherHomework::create([
+            'class_name_id' => $input['class_name_id'],
             'teacher_id' => $input['teacher_id'],
+            'subject' => $input['subject'],
             'name' => $input['name'],
             'description' => $input['description'],
             'deadline' => $input['deadline'],
@@ -78,12 +100,4 @@ class TeacherHomeworkController extends Controller
         // return false;
     }
 
-    public function destroy($id)
-    {
-        $teacherHomework = TeacherHomework::find($id);
-
-        $teacherHomework->delete();
-
-        return redirect('/teacher');
-    }
 }
