@@ -25,14 +25,17 @@
                     </div>
           
                     <div class="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
-                    <span class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">{{ Auth::user()->name }}</span>
-                    <a class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600" href="{{ route('guardian.logout') }}">Logout</a>
+                        <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('guardian.profile', Auth::user()->id) }}">{{ Auth::user()->name }}</a>
+                        <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-blue-500 focus:bg-gray-200 focus:outline-none focus:shadow-outline bg-blue-400" href="{{ route('guardian.logout') }}">Logout</a>
                     </div>
               </div>
             </nav>
         </div>
     </header>
-        <h1>hello Guardian</h1>
+     @foreach ($teachercorrects as $teachercorrect)
+         
+     <h1>{{ $teachercorrect->note }}</h1>
+     @endforeach
   
 </body>
 </html>
