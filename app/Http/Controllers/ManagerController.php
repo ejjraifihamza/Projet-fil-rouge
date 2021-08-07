@@ -8,6 +8,7 @@ use App\Models\Guardian;
 use App\Models\Teacher;
 use App\Models\Manager;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 class ManagerController extends Controller
 {
     public function index() {
@@ -76,5 +77,12 @@ class ManagerController extends Controller
         ]);
 
         return redirect()->route('manager.home');
+    }
+
+    public function profile() {
+        $managers = Manager::all()->where('id', '=', Auth::user()->id);
+        return view('manager.profile', [
+            'managers' => $managers
+        ]);
     }
 }
