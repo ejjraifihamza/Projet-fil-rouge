@@ -10,7 +10,10 @@ use App\Http\Controllers\StudentHomeworkController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\TeacherCoursController;
 use App\Http\Controllers\StudentCoursController;
+use App\Http\Controllers\TeacherCorrectController;
+use App\Models\StudentHomework;
 use App\Models\TeacherCours;
+use App\Models\TeacherHomework;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,8 +45,17 @@ Route::post('/login', [UserAuthController::class, 'handleLogin'])
 Route::get('/student', [StudentHomeworkController::class, 'index'])
     ->name('user.home')
     ->middleware("auth:web");
+Route::get('/student/profile/{id}', [StudentHomeworkController::class, 'profile'])
+    ->name('student.profile')
+    ->middleware("auth:web");
 Route::get('/student/correctupload', [StudentHomeworkController::class, 'correctupload'])
     ->name('student.correctupload')
+    ->middleware("auth:web");
+Route::get('/Student/viewmyhomework/{id}', [StudentHomeworkController::class, 'viewmyhomework'])
+    ->name('student.viewmyhomework')
+    ->middleware("auth:web");
+Route::get('/student/viewmyhomeworkcorrect/{id}', [StudentHomeworkController::class, 'viewmyhomeworkcorrect'])
+    ->name('student.viewmyhomeworkcorrect')
     ->middleware("auth:web");
 Route::get('/student/viewhomework/{id}', [StudentHomeworkController::class, 'view'])
     ->name('user.viewhomework')
@@ -51,7 +63,7 @@ Route::get('/student/viewhomework/{id}', [StudentHomeworkController::class, 'vie
 Route::get('/student/downloadhomework/{file}', [StudentHomeworkController::class, 'download'])
     ->name('user.downloadhomework')
     ->middleware("auth:web");
-Route::get('/student/uploadpage', [StudentHomeworkController::class, 'uploadpage'])
+Route::get('/student/uploadpage/{id}', [StudentHomeworkController::class, 'uploadpage'])
     ->name('student.uploadpage')
     ->middleware("auth:web");
 Route::post('/student/uploadfile', [StudentHomeworkController::class, 'store'])
@@ -60,7 +72,18 @@ Route::post('/student/uploadfile', [StudentHomeworkController::class, 'store'])
 Route::get('/student/downloadcorrection/{file}', [StudentHomeworkController::class, 'downloadCorrection'])
     ->name('user.downloadcorrection')
     ->middleware("auth:web");
-
+Route::get('/student/arabic', [StudentHomeworkController::class, 'arabic'])
+    ->name('student.arabic')
+    ->middleware("auth:web");
+Route::get('/student/francais', [StudentHomeworkController::class, 'francais'])
+    ->name('student.francais')
+    ->middleware("auth:web");
+Route::get('/student/anglais', [StudentHomeworkController::class, 'anglais'])
+    ->name('student.anglais')
+    ->middleware("auth:web");
+Route::get('/student/math', [StudentHomeworkController::class, 'math'])
+    ->name('student.math')
+    ->middleware("auth:web");
 // ! Student Cours Routes
 
 Route::get('/student/cours', [StudentCoursController::class, 'index'])
@@ -71,6 +94,18 @@ Route::get('/student/cours/viewcours/{id}', [StudentCoursController::class, 'vie
     ->middleware("auth:web");
 Route::get('/student/cours/downloadcours/{file}', [StudentCoursController::class, 'download'])
     ->name('student.cours.downloadcours')
+    ->middleware("auth:web");
+Route::get('student/cours/arabic', [StudentCoursController::class, 'arabic'])
+    ->name('student.cours.arabic')
+    ->middleware("auth:web");
+Route::get('student/cours/francais', [StudentCoursController::class, 'francais'])
+    ->name('student.cours.francais')
+    ->middleware("auth:web");
+Route::get('student/cours/anglais', [StudentCoursController::class, 'anglais'])
+    ->name('student.cours.anglais')
+    ->middleware("auth:web");
+Route::get('student/cours/math', [StudentCoursController::class, 'math'])
+    ->name('student.cours.math')
     ->middleware("auth:web");
 
 // ! Guardian Routes
@@ -84,6 +119,9 @@ Route::get('/guardian/logout', [GuardianAuthController::class, 'logout'])
     ->name('guardian.logout');
 Route::post('/guardian/login', [GuardianAuthController::class, 'handleLogin'])
     ->name('guardian.handleLogin');
+Route::get('/guardian/profile', [GuardianAuthController::class, 'profile'])
+    ->name('guardian.profile')
+    ->middleware("auth:webguardian");
 
 // ! Teacher Routes
 
@@ -100,6 +138,12 @@ Route::post('/teacher/login', [TeacherAuthController::class, 'handleLogin'])
 Route::get('/teacher', [TeacherHomeworkController::class, 'index'])
     ->name('teacher.home')
     ->middleware("auth:webteacher");
+Route::get('/teacher/profile/{id}', [TeacherHomeworkController::class, 'profile'])
+    ->name('teacher.profile')
+    ->middleware("auth:webteacher");
+Route::get('/teacher/studentspage', [TeacherHomeworkController::class, 'studentspage'])
+    ->name('teacher.studentspage')
+    ->middleware("auth:webteacher");
 Route::get('/teacher/uploadpage', [TeacherHomeworkController::class, 'uploadpage'])
     ->name('teacher.uploadpage')
     ->middleware("auth:webteacher");
@@ -112,8 +156,23 @@ Route::get('/teacher/{id}/edit', [TeacherHomeworkController::class, 'edit'])
 Route::post('/teacher/updatefile', [TeacherHomeworkController::class, 'update'])
     ->name('teacher.updatefile')
     ->middleware("auth:webteacher");
-Route::post('/teacher/{id}', [TeacherHomeworkController::class, 'destroy'])
-    ->name('teacher.deletefile')
+// Route::post('/teacher/{id}', [TeacherHomeworkController::class, 'destroy'])
+//     ->name('teacher.deletefile')
+//     ->middleware("auth:webteacher");
+Route::get('/teacher/studenthomework', [TeacherCorrectController::class, 'studenthomework'])
+    ->name('teacher.student.homework')
+    ->middleware("auth:webteacher");
+Route::get('/teacher/correctpage/{id}', [TeacherCorrectController::class, 'correctuploadepage'])
+    ->name('teacher.correct.uploadpage')
+    ->middleware("auth:webteacher");
+Route::post('/teacher/uploadteachercorrect', [TeacherCorrectController::class, 'uploadteachercorrect'])
+    ->name('teacher.uploadteachercorrect')
+    ->middleware("auth:webteacher");
+Route::get('/teacher/viewstudenthomework/{id}', [TeacherCorrectController::class, 'viewstudenthomework'])
+    ->name('teacher.viewstudenthomework')
+    ->middleware("auth:webteacher");
+Route::get('/teacher/downloadstudenthomework/{file}', [TeacherCorrectController::class, 'downloadstudenthomework'])
+    ->name('teacher.downloadstudenthomework')
     ->middleware("auth:webteacher");
 
 // ! Teacher Cours Routes
