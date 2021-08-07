@@ -47,17 +47,38 @@
         </div>
         </div>
     </header>
-    <form action="{{ route('teacher.uploadfile') }}" method="post" enctype="multipart/form-data">
-        @csrf
-    <input type="hidden" name="class_name_id" value="{{ Auth::user()->class_name_id }}">
-    <input type="hidden" name="teacher_id" value="{{ Auth::user()->id }}">
-    <input type="hidden" name="subject" value="{{ Auth::user()->subject }}">
-    <input type="text" name="name" placeholder="Homework name">
-    <input type="text" name="description" placeholder="Homework discription">
-    <input type="date" name="deadline">
-    <input type="file" name="file_path">
-    <input type="submit" name="submit" id="">
-    </form>
-  
-</body>
-</html>
+<div class="flex items-center justify-center">
+    @foreach ($students as $student)
+    <div class="bg-gray-100 w-7/12 mt-10 rounded-lg py-10 shadow-xl">
+      <div class="flex items-center justify-center pt-5 flex-col">
+        <img src="https://media.istockphoto.com/photos/portrait-of-adorable-young-happy-boy-picture-id158879321?k=6&m=158879321&s=612x612&w=0&h=_hskTiAyY6Z7kjC9ovEl6ND6PmBKroEEmeOr3d2t2MI=" class="rounded-full w-32">
+        <h1 class="text-gray-800 font-semibold text-xl mt-5">{{ $student->name }}</h1>
+        <h1 class="text-gray-500 mt-8 text-sm">Youssoufia, Maroc</h>
+          <h1 class="text-gray-500 text-sm p-4 text-center">
+            Email : {{ $student->email }}
+          </h1>
+          <h1 class="text-gray-500 text-sm p-4 text-center">
+            @if ($student->class_name = 1)
+                    Classe : class 1
+                @elseif ($student->class_name = 2)
+                    Classe : class 2
+                @elseif ($student->class_name = 3)
+                    Classe : class 3
+                @elseif ($student->class_name = 4)
+                    Classe : class 4
+                @elseif ($student->class_name = 5)
+                    Classe : class 5
+                @elseif ($student->class_name = 6)
+                    Clase : class 6
+            @endif
+          </h1>
+      </div>
+      <div class="text-center">
+        <div>
+          <h1 class="text-xs uppercase text-gray-500">Guardian name :</h1>
+          <h1 class="text-xs text-yellow-500">{{ $student->Guardian->name }}</h>
+        </div>
+      </div>
+    </div>
+    @endforeach
+  </div>

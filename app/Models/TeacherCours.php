@@ -21,4 +21,12 @@ class TeacherCours extends Model
         'description',
         'file_path'
     ];
+
+    public function classe() {
+        return $this->belongsTo(Classe::class);
+    }
+
+    public function teacher() {
+        return $this->belongsTo(Teacher::class);
+    }
 }

@@ -20,4 +20,20 @@ class StudentHomework extends Model
         'name',
         'file_path'
     ];
+
+    public function classe() {
+        return $this->belongsTo(Classe::class);
+    }
+
+    public function teacherHomework() {
+        return $this->belongsTo(TeacherHomework::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function teacherCorrect() {
+        return $this->hasOne(TeacherCorrect::class);
+    }
 }

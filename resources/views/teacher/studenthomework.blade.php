@@ -47,17 +47,56 @@
         </div>
         </div>
     </header>
-    <form action="{{ route('teacher.uploadfile') }}" method="post" enctype="multipart/form-data">
-        @csrf
-    <input type="hidden" name="class_name_id" value="{{ Auth::user()->class_name_id }}">
-    <input type="hidden" name="teacher_id" value="{{ Auth::user()->id }}">
-    <input type="hidden" name="subject" value="{{ Auth::user()->subject }}">
-    <input type="text" name="name" placeholder="Homework name">
-    <input type="text" name="description" placeholder="Homework discription">
-    <input type="date" name="deadline">
-    <input type="file" name="file_path">
-    <input type="submit" name="submit" id="">
-    </form>
+    <div class="m-auto w-4/5 py-24">
+        <div class="text-center">
+            <h1 class="text-5xl uppercase bold">
+                correct homework
+            </h1>
+        </div>
+        <div class="w-5/6 py-10">
+            @foreach ($studenthomeworks as $studenthomework)
+                <div class="m-auto">
+                    <div class="float-right mt-10">
+                        <a class="border-b-2 pb-2 border-dotted italic text-green-500"
+                            href="{{ route('teacher.viewstudenthomework', $studenthomework->id) }}">
+                            view &rarr;
+                        </a>
+                        <br><br>
+                        <a class="border-b-2 pb-2 border-dotted italic text-red-500"
+                        href="{{ route('teacher.downloadstudenthomework', $studenthomework->file_path) }}">
+                            Download &rarr;
+                        </a>
+                    </div>
+                    <div class="pt-10 mb-10">
+                        <a href="{{ route('teacher.correct.uploadpage', $studenthomework->id) }}"
+                        class="border-b-2 pb-2 border-dotted italic text-gray-500"
+                        >Add Your Correction &rarr;</a>
+                    </div>
+                    <iframe src="{{ asset('studentassets/' . $studenthomework->file_path) }}" class="w-48 mb-8 shadow-xl" width="300" height="300" alt=""></iframe>
+                    {{ $studenthomework->subject }}
+                    <br>
+                    {{ $studenthomework->TeacherHomework->description }}
+                    <br>
+                    {{ $studenthomework->User->name }}
+                    <br>
+                    @if ($studenthomework->class_name_id = 1)
+                        class 1
+                    @elseif ($studenthomework->class_name_id = 2)
+                        class 2
+                    @elseif ($studenthomework->class_name_id = 3)
+                        class 3
+                    @elseif ($studenthomework->class_name_id = 4)
+                        class 4
+                    @elseif ($studenthomework->class_name_id = 5)
+                        class 5
+                    @elseif ($studenthomework->class_name_id = 5)
+                        class 6
+                    @endif
+                </div>
+                <hr class="mt-4 mb-8">
+            @endforeach
+        </div>
+    </div>
   
 </body>
 </html>

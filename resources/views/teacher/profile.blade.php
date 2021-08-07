@@ -47,17 +47,35 @@
         </div>
         </div>
     </header>
-    <form action="{{ route('teacher.uploadfile') }}" method="post" enctype="multipart/form-data">
-        @csrf
-    <input type="hidden" name="class_name_id" value="{{ Auth::user()->class_name_id }}">
-    <input type="hidden" name="teacher_id" value="{{ Auth::user()->id }}">
-    <input type="hidden" name="subject" value="{{ Auth::user()->subject }}">
-    <input type="text" name="name" placeholder="Homework name">
-    <input type="text" name="description" placeholder="Homework discription">
-    <input type="date" name="deadline">
-    <input type="file" name="file_path">
-    <input type="submit" name="submit" id="">
-    </form>
+        <div class="flex items-center justify-center">
+            <div class="bg-gray-100 w-7/12 mt-10 rounded-lg py-10 shadow-xl">
+              <div class="flex items-center justify-center pt-5 flex-col">
+                <img src="https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png" class="rounded-full w-32">
+                <h1 class="text-gray-800 font-semibold text-xl mt-5">{{ $teacher->name }}</h1>
+                <h1 class="text-gray-500 mt-8 text-sm">Youssoufia, Maroc</h>
+                  <h1 class="text-gray-500 text-sm p-4 text-center">
+                    Email : {{ $teacher->email }}
+                  </h1>
+                  <h1 class="text-gray-500 text-sm p-4 text-center">
+                    @if ($teacher->class_name = 1)
+                            Classe : class 1 {{ $teacher->subject }}
+                        @elseif ($students->class_name = 2)
+                            Classe : class 2 {{ $teacher->subject }}
+                        @elseif ($students->class_name = 3)
+                            Classe : class 3 {{ $teacher->subject }}
+                        @elseif ($students->class_name = 4)
+                            Classe : class 4 {{ $teacher->subject }}
+                        @elseif ($students->class_name = 5)
+                        ²   Classe : class 5 {{ $teacher->subject }}
+                        @elseif ($students->class_name = 6)
+                            Clase : class 6 {{ $teacher->subject }}
+                    @endif
+                  </h1>
+              </div>
+              
+            </div>
+          
+          </div>
   
 </body>
 </html>

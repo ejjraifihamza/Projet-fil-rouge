@@ -47,17 +47,12 @@
         </div>
         </div>
     </header>
-    <form action="{{ route('teacher.uploadfile') }}" method="post" enctype="multipart/form-data">
-        @csrf
-    <input type="hidden" name="class_name_id" value="{{ Auth::user()->class_name_id }}">
-    <input type="hidden" name="teacher_id" value="{{ Auth::user()->id }}">
-    <input type="hidden" name="subject" value="{{ Auth::user()->subject }}">
-    <input type="text" name="name" placeholder="Homework name">
-    <input type="text" name="description" placeholder="Homework discription">
-    <input type="date" name="deadline">
-    <input type="file" name="file_path">
-    <input type="submit" name="submit" id="">
-    </form>
-  
-</body>
-</html>
+<form action="{{ route('teacher.uploadteachercorrect') }}" method="post">
+    @csrf
+<input type="hidden" name="teacher_id" value="{{ Auth::user()->id }}">
+<input type="hidden" name="user_id" value="{{ $studenthomeworks->User->id }}">
+<input type="hidden" name="student_homework_id" value="{{ $studenthomeworks->id }}">
+<input type="text" name="note" placeholder="Note" required>
+<input type="text" name="notice" placeholder="Notice" required>
+<input type="submit" name="submit" id="">
+</form>

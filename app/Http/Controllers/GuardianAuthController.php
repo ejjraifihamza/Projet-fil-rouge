@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TeacherCorrect;
+use App\Models\Guardian;
 use Illuminate\Support\Facades\Auth;
 
 class GuardianAuthController extends Controller
 {
     public function index()
     {
-        return view('guardian.home');
+        $teachercorrects = TeacherCorrect::all()->where('user_id', '=', Auth::user()->user_id);
+        return view('guardian.home', [
+            'teachercorrects' => $teachercorrects
+        ]);
     }
 
     public function login()
@@ -32,5 +37,13 @@ class GuardianAuthController extends Controller
         Auth::guard('webguardian')->logout();
 
         return redirect()->route('guardian.login');
+    }
+
+    public function profile() {
+        $guardians = Guardian::all()->where('id', '=', Auth::user()->id);
+        // dd($guardian);
+        return view('guardian.profile', [
+            'guardians' => $guardians
+        ]);
     }
 }

@@ -16,6 +16,7 @@ class CreateTeacherCorrectsTable extends Migration
         Schema::create('teacher_corrects', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('teacher_id');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('student_homework_id');
             $table->string('note');
             $table->string('notice');
@@ -23,6 +24,10 @@ class CreateTeacherCorrectsTable extends Migration
             $table->foreign('teacher_id')
                 ->references('id')
                 ->on('teachers')
+                ->onDelete('cascade');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
                 ->onDelete('cascade');
             $table->foreign('student_homework_id')
                 ->references('id')

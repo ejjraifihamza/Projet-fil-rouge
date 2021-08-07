@@ -49,16 +49,21 @@
         </div>
         </div>
     </header>
-    <div class="pt-10">
-        <a href="{{ route('student.cours') }}"
-        class="border-b-2 pb-2 border-dotted italic text-gray-500"
-        >Go Back &rarr;</a>
-    </div>
-    <div>
-        {{ $cours->name }}
-        {{ $cours->description }}
-        {{ $cours->deadline }}
-        <iframe width="800" height="800" src="/coursassets/{{ $cours->file_path }}"></iframe>
-    </div>
+<div>
+    @foreach ($courses as $cours)
+    {{ $cours->name }}
+    <br>
+    {{ $cours->subject }}
+    <br>
+    {{ $cours->description }}
+    <br>
+    {{ $cours->Teacher->name }}
+    <br>
+    {{ $cours->created_at }}
+    <br>
+    @endforeach
+</div>
+
+    
 </body>
 </html>
