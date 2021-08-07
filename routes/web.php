@@ -232,3 +232,6 @@ Route::get('manager/addmanager', [ManagerController::class, 'addManager'])
 Route::post('manager/uploadmanager', [ManagerController::class, 'uploadManager'])
     ->name('manager.uploadmanager')
     ->middleware("auth:webmanager");
+Route::get('manager/profile', [ManagerController::class, 'profile'])
+    ->name('manager.profile')
+    ->middleware("auth:webmanager");
