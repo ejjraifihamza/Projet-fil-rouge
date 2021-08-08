@@ -58,7 +58,7 @@ class TeacherHomeworkController extends Controller
             'deadline' => $input['deadline'],
             'file_path' => $input["file_path"]
         ]);
-        return redirect('/teacher')->with('success','Product updated successfully');
+        return redirect('/teacher')->with('success','Homework Added successfully');
 
     }
 
@@ -96,7 +96,7 @@ class TeacherHomeworkController extends Controller
             'file_path' => $input["file_path"]
         ]);
         if($teacherHomework)
-            return redirect()->route('teacher.home')->with('success','Product updated successfully');
+            return redirect()->route('teacher.home')->with('success','Homework updated successfully');
         // return false;
     }
 
