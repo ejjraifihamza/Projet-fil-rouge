@@ -26,7 +26,7 @@ class GuardianAuthController extends Controller
     {
         if(Auth::guard('webguardian')->attempt($req->only(['email', 'password']))) 
         {
-            return redirect()->route('guardian.home');
+            return redirect()->route('guardian.home')->with('success', 'Welcome dear guardian');
         }
 
         return redirect()->back()->with('error', 'Invalid Credentials');

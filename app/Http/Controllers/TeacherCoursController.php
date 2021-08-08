@@ -41,7 +41,7 @@ class TeacherCoursController extends Controller
             'file_path' => $input['file_path']
         ]);
 
-        return redirect()->route('teacher.cours');
+        return redirect()->route('teacher.cours')->with('success', 'Cours added successfully');
 
     }
 
@@ -71,7 +71,7 @@ class TeacherCoursController extends Controller
             'file_path' => $input['file_path']
         ]);
         if($teacherCours)
-        return redirect()->route('teacher.cours');
+        return redirect()->route('teacher.cours')->with('success', 'Cours updated successfully');
     }
 
     public function destroy($id) {

@@ -42,7 +42,7 @@ class ManagerController extends Controller
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
         ]);
-        return redirect()->route('manager.home');
+        return redirect()->route('manager.home')->with('success', 'Student added successfully');
     }
 
     public function uploadGuardian(Request $request) {
@@ -53,7 +53,7 @@ class ManagerController extends Controller
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password'))
         ]);
-        return redirect()->route('manager.home');
+        return redirect()->route('manager.home')->with('success', 'Guardian added successfully');
     }
 
     public function uploadTeacher(Request $request) {
@@ -66,7 +66,7 @@ class ManagerController extends Controller
             'password' => Hash::make($request->input('password'))
         ]);
         
-        return redirect()->route('manager.home');
+        return redirect()->route('manager.home')->with('success', 'Teacher added successfully');
     }
 
     public function uploadManager(Request $request) {
@@ -76,7 +76,7 @@ class ManagerController extends Controller
             'password' => Hash::make($request->input('password'))
         ]);
 
-        return redirect()->route('manager.home');
+        return redirect()->route('manager.home')->with('success', 'Manager added successfully');
     }
 
     public function profile() {

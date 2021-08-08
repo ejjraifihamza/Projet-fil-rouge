@@ -25,7 +25,7 @@ class TeacherAuthController extends Controller
     {
         if(Auth::guard('webteacher')->attempt($req->only(['email', 'password']))) 
         {
-            return redirect()->route('teacher.home');
+            return redirect()->route('teacher.home')->with('success', 'Welcome dear teacher');
         }
 
         return redirect()->back()->with('error', 'Invalid Credentials');
