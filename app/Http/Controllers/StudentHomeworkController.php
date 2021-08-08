@@ -8,6 +8,8 @@ use App\Models\StudentHomework;
 use App\Models\TeacherCorrect;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class StudentHomeworkController extends Controller
 {
@@ -45,16 +47,24 @@ class StudentHomeworkController extends Controller
     public function viewmyhomework($id) {
         // dd($id);
         $studenthomeworks = StudentHomework::all()->where('teacher_homework_id', '=', $id);
-        return view('user.viewmyhomework', [
-            'studenthomeworks' => $studenthomeworks
-        ]);
+        if (($studenthomeworks)->isEmpty()) {
+            return view('user.error2');
+        } else {
+            return view('user.viewmyhomework', [
+                'studenthomeworks' => $studenthomeworks
+            ]);
+        }
     }
 
     public function viewmyhomeworkcorrect($id) {
         $teachercorrects = TeacherCorrect::all()->where('student_homework_id', '=', $id);
-        return view('user.viewmyhomeworkcorrect', [
-            'teachercorrects' => $teachercorrects
-        ]);
+        if (($teachercorrects)->isEmpty()) {
+            return view('user.error');
+        } else {
+            return view('user.viewmyhomeworkcorrect', [
+                'teachercorrects' => $teachercorrects
+            ]);
+        }
     }
 
     public function uploadpage($id) {
