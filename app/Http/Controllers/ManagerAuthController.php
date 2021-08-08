@@ -20,7 +20,7 @@ class ManagerAuthController extends Controller
             return redirect()->route('manager.home')->with('success', 'Welcome dear manager');
         }
 
-        return redirect()->back()->with('error', 'Invalid Credentials');
+        return redirect()->back()->with('error', 'Invalid Credentials, please try again');
     }
 
     public function logout()
