@@ -46,6 +46,6 @@ class TeacherCorrectController extends Controller
             'note' => $request->input('note'),
             'notice' => $request->input('notice')
         ]);
-        return redirect()->route('teacher.student.homework');
+        return redirect()->route('teacher.student.homework')->with('success', 'Your correct added successfully');
     }
 }
