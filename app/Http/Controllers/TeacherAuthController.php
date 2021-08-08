@@ -28,7 +28,7 @@ class TeacherAuthController extends Controller
             return redirect()->route('teacher.home')->with('success', 'Welcome dear teacher');
         }
 
-        return redirect()->back()->with('error', 'Invalid Credentials');
+        return redirect()->back()->with('error', 'Invalid Credentials, please try again');
     }
 
     public function logout()
