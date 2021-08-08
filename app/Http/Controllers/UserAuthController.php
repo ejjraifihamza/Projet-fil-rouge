@@ -21,7 +21,7 @@ class UserAuthController extends Controller
     {
         if(Auth::attempt($req->only(['email', 'password']))) 
         {
-            return redirect()->route('user.home');
+            return redirect()->route('user.home')->with('success', 'Welcome dear student');
         }
 
         return redirect()->back()->with('error', 'Invalid Credentials');
