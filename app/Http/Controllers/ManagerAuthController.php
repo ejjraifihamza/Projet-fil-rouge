@@ -17,7 +17,7 @@ class ManagerAuthController extends Controller
         // dd($req);
         if(Auth::guard('webmanager')->attempt($req->only(['email', 'password']))) 
         {
-            return redirect()->route('manager.home');
+            return redirect()->route('manager.home')->with('success', 'Welcome dear manager');
         }
 
         return redirect()->back()->with('error', 'Invalid Credentials');
