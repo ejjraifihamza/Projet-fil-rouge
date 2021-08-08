@@ -24,7 +24,7 @@ class UserAuthController extends Controller
             return redirect()->route('user.home')->with('success', 'Welcome dear student');
         }
 
-        return redirect()->back()->with('error', 'Invalid Credentials');
+        return redirect()->back()->with('error', 'Invalid Credentials, please try again');
     }
 
     public function logout()

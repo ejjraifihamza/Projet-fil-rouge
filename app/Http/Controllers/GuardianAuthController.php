@@ -29,7 +29,7 @@ class GuardianAuthController extends Controller
             return redirect()->route('guardian.home')->with('success', 'Welcome dear guardian');
         }
 
-        return redirect()->back()->with('error', 'Invalid Credentials');
+        return redirect()->back()->with('error', 'Invalid Credentials, please try again');
     }
 
     public function logout()
