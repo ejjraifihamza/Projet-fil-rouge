@@ -5,7 +5,7 @@
         <div class="g1">
             <div class="circles text-center text-black uppercase ">
                 <a href="/student">
-                    <div class="circle-1 shadow-xl">
+                    <div class="circle-1 shadow-xl bg-green-100">
                         <h1 class="my-16">
                             Students
                         </h1>

@@ -47,8 +47,8 @@
         </div>
         </div>
     </header>
-<div class="flex items-center justify-center">
     @foreach ($students as $student)
+<div class="flex items-center justify-center">
     <div class="bg-gray-100 w-7/12 mt-10 rounded-lg py-10 shadow-xl">
       <div class="flex items-center justify-center pt-5 flex-col">
         <img src="https://media.istockphoto.com/photos/portrait-of-adorable-young-happy-boy-picture-id158879321?k=6&m=158879321&s=612x612&w=0&h=_hskTiAyY6Z7kjC9ovEl6ND6PmBKroEEmeOr3d2t2MI=" class="rounded-full w-32">
@@ -80,5 +80,7 @@
         </div>
       </div>
     </div>
-    @endforeach
-  </div>
+</div>
+@endforeach
+  </body>
+  </html>
