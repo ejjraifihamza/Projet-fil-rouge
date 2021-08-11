@@ -23,4 +23,8 @@ class TeacherCorrect extends Model
     public function studentHomeworks() {
         return $this->belongsTo(StudentHomework::class);
     }
+
+    public function Teacher() {
+        return $this->belongsTo(Teacher::class);
+    }
 }
