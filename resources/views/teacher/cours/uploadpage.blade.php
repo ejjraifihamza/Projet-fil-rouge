@@ -47,16 +47,31 @@
         </div>
         </div>
     </header>
+    <div class="flex items-center justify-center">
+        <div class="flex justify-center pt-10 bg-gray-100 w-7/12 mt-10 rounded-lg py-10 shadow-xl">
     <form action="{{ route('teacher.cours.uploadfile') }}" method="post" enctype="multipart/form-data">
         @csrf
+        <div class="text-center mb-7">
+            <h1 class="text-4xl uppercase bold">
+                Add Cours
+            </h1>
+        </div>
     <input type="hidden" name="teacher_id" value="{{ Auth::user()->id }}">
     <input type="hidden" name="class_name_id" value="{{ Auth::user()->class_name_id }}">
     <input type="hidden" name="subject" value="{{ Auth::user()->subject }}">
-    <input type="text" name="name" placeholder="cours name">
-    <input type="text" name="description" placeholder="cours discription">
-    <input type="file" name="file_path">
-    <input type="submit" name="submit" id="">
+    <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">Name</label>
+    <input type="text" required name="name" placeholder="cours name" class="block shadow-5xl mb-5 p-2 w-80 italic
+    placeholder-gray-400 w-full">
+    <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">Description</label>
+    <input type="text" required name="description" placeholder="cours discription" class="block shadow-5xl mb-5 p-2 w-80 italic
+    placeholder-gray-400 w-full">
+    <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">Name</label>
+    <input type="file" required name="file_path" class="block shadow-5xl mb-5 p-2 w-80 italic
+    placeholder-gray-400 w-full">
+    <input type="submit" name="submit" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-blue-500 focus:bg-gray-200 focus:outline-none focus:shadow-outline bg-blue-400">
     </form>
-  
+</div>
+</div>
+
 </body>
 </html>
