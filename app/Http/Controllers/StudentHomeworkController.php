@@ -15,12 +15,10 @@ class StudentHomeworkController extends Controller
 {
     public function index()
     {
-        $data = TeacherHomework::all()->where('class_name_id', '=', Auth::user()->class_name_id)
+        $homeworks = TeacherHomework::all()->where('class_name_id', '=', Auth::user()->class_name_id)
                                     ->sortByDesc('created_at');
-        $homeworks = StudentHomework::all()->where('user_id', '=', Auth::user()->id);
         return view('user.home',[
-            'data' => $data,
-            'homeworks' => $homeworks
+            'homeworks' => $homeworks,
         ]);
     }
 
@@ -46,7 +44,8 @@ class StudentHomeworkController extends Controller
 
     public function viewmyhomework($id) {
         // dd($id);
-        $studenthomeworks = StudentHomework::all()->where('teacher_homework_id', '=', $id);
+        $studenthomeworks = StudentHomework::all()->where('teacher_homework_id', '=', $id)
+                                            ->where('user_id', '=', Auth::user()->id);
         if (($studenthomeworks)->isEmpty()) {
             return view('user.error2');
         } else {
@@ -70,11 +69,16 @@ class StudentHomeworkController extends Controller
     public function uploadpage($id) {
         $homeworks = TeacherHomework::find($id);
         // dd($homeworks);
-        $studenthomeworks = StudentHomework::all();
-        return view('user.uploadpage', [
-            'homeworks' => $homeworks,
-            'studenthomeworks' => $studenthomeworks
-        ]);
+        $studenthomeworks = StudentHomework::all()->where('teacher_homework_id', '=', $id)
+                                                ->where('user_id', '=', Auth::user()->id);
+        if (($studenthomeworks)->isEmpty()) {
+            return view('user.uploadpage', [
+                'homeworks' => $homeworks,
+                'studenthomeworks' => $studenthomeworks
+            ]);
+        } else {
+            return view('user.error3');
+        }
     }
 
     public function store(Request $request) {
