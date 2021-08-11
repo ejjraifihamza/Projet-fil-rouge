@@ -47,12 +47,28 @@
         </div>
         </div>
     </header>
-<form action="{{ route('teacher.uploadteachercorrect') }}" method="post">
-    @csrf
-<input type="hidden" name="teacher_id" value="{{ Auth::user()->id }}">
-<input type="hidden" name="user_id" value="{{ $studenthomeworks->User->id }}">
-<input type="hidden" name="student_homework_id" value="{{ $studenthomeworks->id }}">
-<input type="text" name="note" placeholder="Note" required>
-<input type="text" name="notice" placeholder="Notice" required>
-<input type="submit" name="submit" id="">
-</form>
+<div class="flex items-center justify-center">
+<div class="flex justify-center pt-10 bg-gray-100 w-7/12 mt-10 rounded-lg py-10 shadow-xl">
+    <form action="{{ route('teacher.uploadteachercorrect') }}" method="post">
+        @csrf
+            <div class="text-center mb-7">
+                <h1 class="text-4xl uppercase bold">
+                    Add Correction
+                </h1>
+            </div>
+        <input type="hidden" name="teacher_id" value="{{ Auth::user()->id }}">
+        <input type="hidden" name="user_id" value="{{ $studenthomeworks->User->id }}">
+        <input type="hidden" name="student_homework_id" value="{{ $studenthomeworks->id }}">
+        <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">Note</label>
+        <input type="text" name="note" placeholder="Note" required class="block shadow-5xl mb-5 p-2 w-80 italic
+        placeholder-gray-400 w-full">
+        <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">Notice</label>
+        <input type="text" name="notice" placeholder="Notice" required class="block shadow-5xl mb-5 p-2 w-80 italic
+        placeholder-gray-400 w-full">
+        <input type="submit" name="submit" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-blue-500 focus:bg-gray-200 focus:outline-none focus:shadow-outline bg-blue-400">
+    </form>
+</div>
+</div>
+
+</body>
+</html>
