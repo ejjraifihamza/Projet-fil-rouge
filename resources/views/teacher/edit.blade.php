@@ -48,49 +48,52 @@
         </div>
         </div>
     </header>
-    <div class="m-auto w-4/8 py-24">
-        <div class="text-center">
-            <h1 class="text-5xl uppercase bold">
-                Update car
-            </h1>
-        </div>
-    </div>
-    <div class="flex justify-center pt-20">
+    <div class="flex items-center justify-center">
+        <div class="flex justify-center pt-10 bg-gray-100 w-7/12 mt-10 rounded-lg py-10 shadow-xl">
         <form action="{{ route('teacher.updatefile',$cours->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <div class="text-center mb-7">
+                <h1 class="text-4xl uppercase bold">
+                    Update homework
+                </h1>
+            </div>
             <input type="hidden" name="id" value="{{ $cours->id }}">
-            {{-- @method('PUT') --}}
-            <div class="block">
+                <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">Name</label>
                 <input type="text"
-                class="block shadow-5xl mb-10 p-2 w-80 italic
-                placeholder-gray-400"
+                class="block shadow-5xl mb-5 p-2 w-80 italic
+                placeholder-gray-400 w-full"
                 name="name"
+                required
                 value="{{ $cours->name }}">
-
+                <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">Description</label>
                 <input type="text"
-                class="block shadow-5xl mb-10 p-2 w-80 italic
-                placeholder-gray-400"
+                class="block shadow-5xl mb-5 p-2 w-80 italic
+                placeholder-gray-400 w-full"
                 name="description"
+                required
                 value="{{ $cours->description }}">
-
+                <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">Deadline</label>
                 <input type="date"
-                class="block shadow-5xl mb-10 p-2 w-80 italic
-                placeholder-gray-400"
+                class="block shadow-5xl mb-5 p-2 w-80 italic
+                placeholder-gray-400 w-full"
+                required
                 name="deadline">
-
+                <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">Choose file</label>
                 <input type="file"
-                class="block shadow-5xl mb-10 p-2 w-80 italic
-                placeholder-gray-400"
+                class="block shadow-5xl mb-5 p-2 w-80 italic
+                placeholder-gray-400 w-full"
+                required
                 name="path_file"
                 value="{{ $cours->path_file }}">
 
-                <button type="submit" class="bg-green-500 block shadow-5xl mb-10 p-2 w-80
-                uppercase font-bold hover:bg-green-400">
+                <button type="submit" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-blue-500 focus:bg-gray-200 focus:outline-none focus:shadow-outline bg-blue-400">
                     Submit
                 </button>
             </div>
         </form>
     </div>
+</div>
+
     {{-- @if ($errors->any())
         <div class="w-4/8 m-auto text-center">
             @foreach ($errors->all() as $error)
