@@ -23,4 +23,8 @@ class Teacher extends Authenticatable
     public function classe() {
         return $this->belongsTo(Classe::class);
     }
+
+    public function teacherCorrects() {
+        return $this->hasMany(TeacherCorrect::class);
+    }
 }
