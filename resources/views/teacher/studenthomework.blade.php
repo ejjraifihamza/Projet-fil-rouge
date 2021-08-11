@@ -73,7 +73,7 @@
     <div class="m-auto w-4/5 py-24">
         <div class="text-center">
             <h1 class="text-5xl uppercase bold">
-                correct homework
+                Students homework
             </h1>
         </div>
         <div class="w-5/6 py-10">
@@ -91,7 +91,7 @@
                         </a>
                     </div>
                     <div class="pt-10 mb-10">
-                        <a href="{{ route('teacher.correct.uploadpage', $studenthomework->id) }}"
+                        <a href="{{ route('teacher.correct.uploadpage', ['id' => $studenthomework->id, 'user_id' => $studenthomework->user_id]) }}"
                         class="border-b-2 pb-2 border-dotted italic text-gray-500"
                         >Add Your Correction &rarr;</a>
                     </div>
