@@ -48,23 +48,27 @@
         </div>
         </div>
     </header>
-    {{-- @foreach ($studenthomeworks as $studenthomework)
-
-    @endforeach
-     @if ($studenthomework->user_id == Auth::user()->id
-        && $studenthomework->teacher_homework_id == $homeworks->id)
-            already 
-            @else --}}
+    <div class="flex items-center justify-center">
+        <div class="flex justify-center pt-10 bg-gray-100 w-7/12 mt-10 rounded-lg py-10 shadow-xl">
             <form action="{{ route('student.uploadfile') }}" method="post" enctype="multipart/form-data">
                 @csrf
+                <div class="text-center mb-7">
+                    <h1 class="text-4xl uppercase bold">
+                        Add Your correction
+                    </h1>
+                </div>
                 <input type="hidden" name="student_id" value="{{ Auth::user()->id }}">
                 <input type="hidden" name="teacher_homework_id" value="{{ $homeworks->id }}">
                 <input type="hidden" name="class_name_id" value="{{ Auth::user()->class_name_id }}">
                 <input type="hidden" name="subject" value="{{ $homeworks->subject }}">
                 <input type="hidden" name="name" value="{{ $homeworks->name }}">
-                <input type="file" name="file_path" required>
-                <input type="submit" name="submit" id="">
+                <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">Choose file</label>
+                <input type="file" name="file_path" required class="block shadow-5xl mb-5 p-2 w-80 italic
+                placeholder-gray-400 w-full">
+                <input type="submit" name="submit" class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-blue-500 focus:bg-gray-200 focus:outline-none focus:shadow-outline bg-blue-400">
             </form>
-            {{-- @endif --}}
+            </div>
+        </div>
+
 </body>
 </html>
