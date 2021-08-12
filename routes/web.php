@@ -162,7 +162,7 @@ Route::post('/teacher/updatefile', [TeacherHomeworkController::class, 'update'])
 Route::get('/teacher/studenthomework', [TeacherCorrectController::class, 'studenthomework'])
     ->name('teacher.student.homework')
     ->middleware("auth:webteacher");
-Route::get('/teacher/correctpage/{id}', [TeacherCorrectController::class, 'correctuploadepage'])
+Route::get('/teacher/correctpage/{id}/{user_id}', [TeacherCorrectController::class, 'correctuploadepage'])
     ->name('teacher.correct.uploadpage')
     ->middleware("auth:webteacher");
 Route::post('/teacher/uploadteachercorrect', [TeacherCorrectController::class, 'uploadteachercorrect'])
@@ -173,6 +173,9 @@ Route::get('/teacher/viewstudenthomework/{id}', [TeacherCorrectController::class
     ->middleware("auth:webteacher");
 Route::get('/teacher/downloadstudenthomework/{file}', [TeacherCorrectController::class, 'downloadstudenthomework'])
     ->name('teacher.downloadstudenthomework')
+    ->middleware("auth:webteacher");
+Route::get('/teacher/viewassignmenthomeworkcorrect/{id}', [TeacherCorrectController::class, 'viewassignmenthomeworkcorrect'])
+    ->name('teacher.viewassignmenthomeworkcorrect')
     ->middleware("auth:webteacher");
 
 // ! Teacher Cours Routes
