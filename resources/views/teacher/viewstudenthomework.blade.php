@@ -47,9 +47,15 @@
         </div>
         </div>
     </header>
-    {{ $studenthomeworks->name }}
-    {{ $studenthomeworks->description }}
-    {{ $studenthomeworks->deadline }}
+    <div class="flex items-center justify-center">
+        <div class="flex justify-center pt-10 bg-gray-100 w-7/12 mt-10 rounded-lg py-10 shadow-xl">
+            <div class="flex items-center justify-center pt-5 flex-col">
+                <h1 class="text-2xl bold">{{ $studenthomeworks->User->name }}</h1>
+                <h1 class="text-2xl bold mb-5">{{ $studenthomeworks->name }}</h1>
     <iframe width="800" height="800" src="/studentassets/{{ $studenthomeworks->file_path }}"></iframe>
+    </div>
+</div>
+</div>
+
 </body>
 </html>

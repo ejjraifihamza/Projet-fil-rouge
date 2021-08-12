@@ -49,16 +49,14 @@
         </div>
         </div>
     </header>
-    <div class="pt-10">
-        <a href="{{ route('student.cours') }}"
-        class="border-b-2 pb-2 border-dotted italic text-gray-500"
-        >Go Back &rarr;</a>
+    <div class="flex items-center justify-center">
+        <div class="flex justify-center pt-10 bg-gray-100 w-7/12 mt-10 rounded-lg py-10 shadow-xl">
+            <div class="flex items-center justify-center pt-5 flex-col">
+                <h1 class="text-2xl bold">{{ $cours->name }}</h1>
+                <h1 class="text-2xl bold mb-5">{{ $cours->description }}</h1>
+    <iframe width="800" height="800" src="/coursassets/{{ $cours->file_path }}"></iframe>
     </div>
-    <div>
-        {{ $cours->name }}
-        {{ $cours->description }}
-        {{ $cours->deadline }}
-        <iframe width="800" height="800" src="/coursassets/{{ $cours->file_path }}"></iframe>
-    </div>
+</div>
+</div>
 </body>
 </html>

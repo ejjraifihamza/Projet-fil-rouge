@@ -48,23 +48,42 @@
         </div>
         </div>
     </header>
-    <div>
-        @foreach ($homeworks as $homework)
-        {{ $homework->name }}
-        <br>
-        {{ $homework->subject }}
-        <br>
-        {{ $homework->description }}
-        <br>
-        {{ $homework->Teacher->name }}
-        <br>
-        {{ $homework->deadline }}
-        <br>
-        {{ $homework->created_at }}
-        <br>
-        <iframe src="{{ asset('assets/' . $homework->file_path) }}" class="w-48 mb-8 shadow-xl" width="300" height="300" alt=""></iframe>
-        @endforeach
+    <div class="text-center mt-8">
+        <h1 class="text-4xl uppercase bold">
+            Anglais
+        </h1>
     </div>
+    @foreach ($homeworks as $homework)
+    <div class="flex items-center justify-center">
+        <div class="bg-gray-100 w-7/12 mt-10 rounded-lg py-10 shadow-xl">
+          <div class="flex items-center justify-center pt-5 flex-col">
+            <div class="flex items-center justify-center pt-2 flex-col">
+                <a class="border-b-2 border-dotted italic text-green-500"
+                href="{{ route('user.viewhomework', $homework->id) }}">
+                    view &rarr;
+                </a>
+                <a class="border-b-2 border-dotted italic text-red-500 mt-2"
+                href="{{ route('user.downloadhomework', $homework->file_path) }}">
+                    Download &rarr;
+                </a>
+                <a class="border-b-2 border-dotted italic text-blue-500 mt-2"
+                href="{{ route('student.viewmyhomework', $homework->id) }}">
+                    Correction &rarr;
+                </a>
+                <a class="border-b-2 mt-2 border-dotted italic text-yellow-500"
+                href="{{ route('student.uploadpage', $homework->id) }}">
+                    Add Your Correction &rarr;
+                </a>
+            </div>
+            <h1 class="text-gray-800 font-semibold text-xl mt-2">{{ $homework->name }}</h1>
+            <h1 class="text-gray-800 font-semibold text-xl mt-5">{{ $homework->description }}</h1>
+            <h1 class="text-gray-800 font-semibold text-xl mt-5 mb-5">{{ $homework->Teacher->name }}</h1>
+            <iframe src="{{ asset('assets/' . $homework->file_path) }}" class="w-48 mb-8 shadow-xl" width="300" height="300" alt=""></iframe>
+            <h1 class="text-gray-800 font-semibold text-xl mt-5 text-red-500">Deadline : {{ $homework->deadline }}</h1>
+    </div>
+</div>
+</div>
+@endforeach
   
 </body>
 </html>

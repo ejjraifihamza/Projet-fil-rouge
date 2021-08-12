@@ -75,11 +75,11 @@
         <h1 class="text-5xl uppercase bold">
             cours
         </h1>
-    </div>
-    <div class="pt-10">
-        <a href="{{ route('teacher.cours.uploadpage') }}"
-        class="border-b-2 pb-2 border-dotted italic text-gray-500"
-        >Add a new cours &rarr;</a>
+        <div class="pt-10 mb-16">
+            <a href="{{ route('teacher.cours.uploadpage') }}"
+            class="border-b-2 pb-2 border-dotted italic text-gray-500"
+            >Add a new cours &rarr;</a>
+        </div>
     </div>
     <div class="w-5/6 py-10">
         @foreach ($cours as $cours)
@@ -100,10 +100,8 @@
                     </form>
                 </div>
                 <iframe src="{{ asset('coursassets/' . $cours->file_path) }}" class="w-48 mb-8 shadow-xl" width="300" height="300" alt=""></iframe>
-                <h2 class="text-gray-700 text-5xl hover:text-gray-500">
-                    <a href="/teacher/cours/{{ $cours->id }}">
+                <h2 class="text-gray-700 text-5xl">
                         {{ $cours->name }}
-                    </a>
                 </h2>
                 <p class="text-lg text-gray-700 py-6">
                     {{ $cours->description }}

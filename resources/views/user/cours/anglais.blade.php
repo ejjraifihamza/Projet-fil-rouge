@@ -49,21 +49,33 @@
         </div>
         </div>
     </header>
-<div>
-    @foreach ($courses as $cours)
-    {{ $cours->name }}
-    <br>
-    {{ $cours->subject }}
-    <br>
-    {{ $cours->description }}
-    <br>
-    {{ $cours->Teacher->name }}
-    <br>
-    {{ $cours->created_at }}
-    <br>
-    @endforeach
+    <div class="text-center mt-8">
+        <h1 class="text-4xl uppercase bold">
+            Anglais
+        </h1>
+    </div>
+@foreach ($courses as $cours)
+    <div class="flex items-center justify-center">
+        <div class="bg-gray-100 w-7/12 mt-10 rounded-lg py-10 shadow-xl">
+          <div class="flex items-center justify-center pt-5 flex-col">
+              <div class="flex items-center justify-center pt-2 flex-col">
+                        <a class="border-b-2 border-dotted italic text-green-500"
+                        href="{{ route('student.cours.viewcours', $cours->id) }}">
+                            view &rarr;
+                        </a>
+                        <a class="border-b-2 border-dotted italic text-red-500 mt-2"
+                        href="{{ route('student.cours.downloadcours', $cours->file_path) }}">
+                            Download &rarr;
+                        </a>
+              </div>
+            <h1 class="text-gray-800 font-semibold text-xl mt-5">{{ $cours->name }}</h1>
+            <h1 class="text-gray-800 font-semibold text-xl mt-5">{{ $cours->description }}</h1>
+            <h1 class="text-gray-800 font-semibold text-xl mt-5 mb-5">{{ $cours->Teacher->name }}</h1>
+            <iframe src="{{ asset('coursassets/' . $cours->file_path) }}" class="w-48 mb-8 shadow-xl" width="300" height="300" alt=""></iframe>
+    </div>
 </div>
-
+</div>
+@endforeach
     
 </body>
 </html>

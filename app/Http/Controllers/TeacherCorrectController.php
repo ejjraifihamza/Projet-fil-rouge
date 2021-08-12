@@ -30,11 +30,17 @@ class TeacherCorrectController extends Controller
         return response()->download(public_path('studentassets/'.$file));
     }
     
-    public function correctuploadepage($id) {
+    public function correctuploadepage($id, $user_id) {
         $studenthomeworks = StudentHomework::find($id);
-        return view('teacher.correctpage', [
-            'studenthomeworks' => $studenthomeworks
-        ]);
+        $check = TeacherCorrect::all()->where('student_homework_id', '=', $id)
+                                        ->where('user_id', '=', $user_id);
+        if (($check)->isEmpty()) {
+            return view('teacher.correctpage', [
+                'studenthomeworks' => $studenthomeworks
+            ]);
+        }else {
+            return view('teacher.error');
+        }
     }
 
 
@@ -47,5 +53,12 @@ class TeacherCorrectController extends Controller
             'notice' => $request->input('notice')
         ]);
         return redirect()->route('teacher.student.homework')->with('success', 'Your correct added successfully');
+    }
+
+    public function viewassignmenthomeworkcorrect($id) {
+        $studenthomeworks = StudentHomework::all()->where('teacher_homework_id', '=', $id);
+        return view('teacher.viewallstudenthomework', [
+            'studenthomeworks' => $studenthomeworks
+        ]);
     }
 }

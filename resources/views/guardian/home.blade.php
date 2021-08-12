@@ -57,10 +57,22 @@
         </div>
     </div>
     @endif
+    <div class="text-center mt-8">
+        <h1 class="text-4xl uppercase bold">
+            Latest homework correction
+        </h1>
+    </div>
      @foreach ($teachercorrects as $teachercorrect)
-         
-     <h1>{{ $teachercorrect->note }}</h1>
+     <div class="flex items-center justify-center">
+        <div class="bg-gray-100 w-7/12 mt-10 rounded-lg py-10 shadow-xl">
+            <div class="flex items-center justify-center pt-2 flex-col">
+                <h1 class="text-gray-800 font-semibold text-xl mt-2 mb-2">{{ $teachercorrect->Teacher->subject }}</h1>
+                <h1 class="text-gray-800 font-semibold text-xl mt-2 mb-2">{{ $teachercorrect->Teacher->name }}</h1>
+                <h1 class="text-gray-800 font-semibold text-xl mt-2 mb-2">{{ $teachercorrect->note }}</h1>
+                <h1 class="text-gray-800 font-semibold text-xl mt-2 mb-2">{{ $teachercorrect->notice }}</h1>
      @endforeach
-  
+    </div>
+</div>
+</div>
 </body>
 </html>

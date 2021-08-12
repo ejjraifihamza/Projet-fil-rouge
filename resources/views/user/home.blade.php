@@ -79,44 +79,44 @@
             </h1>
         </div>
         <div class="w-5/6 py-10">
-            @foreach ($data as $cours)
+            @foreach ($homeworks as $homework)
                 <div class="m-auto">
                     <div class="float-right mt-20">
                         <a class="border-b-2 pb-2 border-dotted italic text-green-500"
-                        href="{{ route('user.viewhomework', $cours->id) }}">
+                        href="{{ route('user.viewhomework', $homework->id) }}">
                             view &rarr;
                         </a>
                         <br><br>
                         <a class="border-b-2 pb-2 border-dotted italic text-red-500"
-                        href="{{ route('user.downloadhomework', $cours->file_path) }}">
+                        href="{{ route('user.downloadhomework', $homework->file_path) }}">
                             Download &rarr;
                         </a>
                         <br><br>
                         <a class="border-b-2 pb-2 border-dotted italic text-blue-500"
-                        href="{{ route('student.viewmyhomework', $cours->id) }}">
+                        href="{{ route('student.viewmyhomework', $homework->id) }}">
                             Correction &rarr;
                         </a>
                       
                     </div>
                     <div class="pt-10 mb-10">
-                        <a href="{{ route('student.uploadpage', $cours->id) }}"
+                        <a href="{{ route('student.uploadpage', $homework->id) }}"
                         class="border-b-2 pb-2 border-dotted italic text-gray-500"
                         >Add Your Correction &rarr;</a>
                     </div>
-                    <iframe src="{{ asset('assets/' . $cours->file_path) }}" class="w-48 mb-8 shadow-xl" width="300" height="300" alt=""></iframe>
+                    <iframe src="{{ asset('assets/' . $homework->file_path) }}" class="w-48 mb-8 shadow-xl" width="300" height="300" alt=""></iframe>
                     <span class="uppercase text-red-500 font-bold text-xs italic">
-                        deadline {{ $cours->deadline }}
+                        deadline {{ $homework->deadline }}
                     </span>
                     <h2 class="text-gray-700 text-5xl hover:text-gray-500">
-                        <a href="{{ route('student.viewmyhomework', $cours->id) }}">
-                            {{ $cours->name }}
+                        <a href="{{ route('student.viewmyhomework', $homework->id) }}">
+                            {{ $homework->name }}
                         </a>
                     </h2>
                     <h4 class="text-gray-700 text-2xl mt-3">
-                        Teacher Name : {{ $cours->Teacher->name }}
+                        Teacher Name : {{ $homework->Teacher->name }}
                     </h4>
                     <p class="text-lg text-gray-700 py-6">
-                        {{ $cours->description }}
+                        {{ $homework->description }}
                     </p>
                     <hr class="mt-4 mb-8">
                 </div>

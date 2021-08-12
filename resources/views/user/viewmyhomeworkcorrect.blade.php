@@ -49,10 +49,16 @@
         </div>
         </div>
     </header>
-@foreach ($teachercorrects as $teachercorrect)
-    {{ $teachercorrect->note }}
-    <br>
-    {{ $teachercorrect->notice }}
-@endforeach
+    <div class="flex items-center justify-center">
+        <div class="bg-gray-100 w-7/12 mt-10 rounded-lg py-10 shadow-xl">
+            <div class="flex items-center justify-center flex-col">
+                @foreach ($teachercorrects as $teachercorrect)
+                <h1 class="text-gray-800 font-semibold text-xl mt-2 mb-2">{{ $teachercorrect->note }}</h1>
+                <h1 class="text-gray-800 font-semibold text-xl mt-2 mb-2">{{ $teachercorrect->notice }}</h1>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

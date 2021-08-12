@@ -29,7 +29,8 @@
             <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
             <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('student.profile', Auth::user()->id) }}">{{ Auth::user()->name }}</a>
             <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('student.cours') }}">Cours</a>
-            <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('user.home') }}">Home</a> <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-blue-500 focus:bg-gray-200 focus:outline-none focus:shadow-outline bg-blue-400" href="{{ route('user.logout') }}">Logout</a>
+            <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('user.home') }}">Home</a>
+            <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-blue-500 focus:bg-gray-200 focus:outline-none focus:shadow-outline bg-blue-400" href="{{ route('user.logout') }}">Logout</a>
             <div @click.away="open = false" class="relative" x-data="{ open: false }">
                 <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
                 <span>Homework</span>
@@ -48,41 +49,32 @@
         </div>
         </div>
     </header>
-    <div class="text-center mt-8">
-        <h1 class="text-4xl uppercase bold">
-            Arabic
-        </h1>
-    </div>
-    @foreach ($homeworks as $homework)
     <div class="flex items-center justify-center">
         <div class="bg-gray-100 w-7/12 mt-10 rounded-lg py-10 shadow-xl">
-          <div class="flex items-center justify-center pt-5 flex-col">
-            <div class="flex items-center justify-center pt-2 flex-col">
-                <a class="border-b-2 border-dotted italic text-green-500"
-                href="{{ route('user.viewhomework', $homework->id) }}">
-                    view &rarr;
-                </a>
-                <a class="border-b-2 border-dotted italic text-red-500 mt-2"
-                href="{{ route('user.downloadhomework', $homework->file_path) }}">
-                    Download &rarr;
-                </a>
-                <a class="border-b-2 border-dotted italic text-blue-500 mt-2"
-                href="{{ route('student.viewmyhomework', $homework->id) }}">
-                    Correction &rarr;
-                </a>
-                <a class="border-b-2 mt-2 border-dotted italic text-yellow-500"
-                href="{{ route('student.uploadpage', $homework->id) }}">
-                    Add Your Correction &rarr;
-                </a>
+            <div class="flex items-center justify-center pt-5 flex-col">
+                <div class="alert flex flex-row items-center p-5 rounded border-b-2 border-blue-300">
+                    <div class="alert-icon flex items-center bg-blue-100 border-2 border-blue-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+                        <span class="text-blue-500">
+                            <svg fill="currentColor"
+                                 viewBox="0 0 20 20"
+                                 class="h-6 w-6">
+                                <path fill-rule="evenodd"
+                                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                      clip-rule="evenodd"></path>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="alert-content ml-4">
+                        <div class="alert-title font-semibold text-lg text-blue-800">
+                            Info
+                        </div>
+                        <div class="alert-description text-sm text-blue-600">
+                            You have already done your homework
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h1 class="text-gray-800 font-semibold text-xl mt-2">{{ $homework->name }}</h1>
-            <h1 class="text-gray-800 font-semibold text-xl mt-5">{{ $homework->description }}</h1>
-            <h1 class="text-gray-800 font-semibold text-xl mt-5 mb-5">{{ $homework->Teacher->name }}</h1>
-            <iframe src="{{ asset('assets/' . $homework->file_path) }}" class="w-48 mb-8 shadow-xl" width="300" height="300" alt=""></iframe>
-            <h1 class="text-gray-800 font-semibold text-xl mt-5 text-red-500">Deadline : {{ $homework->deadline }}</h1>
+        </div>
     </div>
-</div>
-</div>
-@endforeach
 </body>
 </html>
