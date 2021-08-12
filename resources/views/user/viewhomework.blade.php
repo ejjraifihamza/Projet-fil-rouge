@@ -48,9 +48,16 @@
         </div>
         </div>
     </header>
-    {{ $data->name }}
-    {{ $data->description }}
-    {{ $data->deadline }}
-    <iframe width="800" height="800" src="/assets/{{ $data->file_path }}"></iframe>
+    <div class="flex items-center justify-center">
+        <div class="bg-gray-100 w-7/12 mt-10 rounded-lg py-10 shadow-xl">
+            <div class="flex items-center justify-center flex-col">
+                <h1 class="text-gray-800 font-semibold text-xl mt-2 mb-2">{{ $data->name }}</h1>
+                <h1 class="text-gray-800 font-semibold text-xl mt-2 mb-2">{{ $data->description }}</h1>
+                <h1 class="text-gray-800 font-semibold text-xl mt-2 mb-2 text-red-500">Deadline : {{ $data->deadline }}</h1>
+                <iframe width="800" height="800" src="/assets/{{ $data->file_path }}"></iframe>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
